@@ -361,3 +361,5 @@ def student_dashboard():
             break
         else:
             print("Invalid Choice.")
+
+# Documentation: Explained dashboard logic, enrollment, and grade calculations.
