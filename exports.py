@@ -491,3 +491,5 @@ def generate_student_report():
         f"\nPDF Report Generated Successfully: "
         f"{file_name}"
     )
+
+# Added PDF report rendering using ReportLab canvas routines.
