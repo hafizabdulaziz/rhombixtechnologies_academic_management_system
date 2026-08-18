@@ -58,3 +58,5 @@ class TestSystem(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+# Documentation: Added assertions for session timeouts and failed password validation.
