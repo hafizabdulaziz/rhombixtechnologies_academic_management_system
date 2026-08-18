@@ -212,3 +212,5 @@ def view_attendance():
     )
 
     print("========================================")
+
+# Documentation: Attendance ratio calculation and status tracking.

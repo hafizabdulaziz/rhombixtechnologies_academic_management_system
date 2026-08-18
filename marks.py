@@ -381,3 +381,5 @@ def add_marks():
             "MARKS_UPDATED",
             f"Marks updated for {selected_subject[1]}."
         )
+
+# Documentation: Detailed marks parsing, validation, and percentage formulas.
