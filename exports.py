@@ -495,3 +495,5 @@ def generate_student_report():
 # Added PDF report rendering using ReportLab canvas routines.
 
 # Sanitized roll numbers are sanitized using Windows-safe path characters.
+
+# Documentation: Documented PDF table layouts and page numbering mechanisms.
