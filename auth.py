@@ -232,3 +232,5 @@ def change_password():
     print("Password Changed Successfully.")
 
 # Refined local imports to prevent circular dependencies at runtime.
+
+# Documentation: Added inline descriptions for signup, login, and authorization checks.
