@@ -20,3 +20,5 @@ def main_menu():
             break
         else:
             print("Invalid Choice.")
+
+# Refactored: Standardized terminal color margins and menu alignments.
