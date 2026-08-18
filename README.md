@@ -93,9 +93,28 @@ The application is engineered following **modular programming principles**, sepa
 * **Dashboard Isolation:** Users are restricted to their authorized dashboards.
 
 ### 2. Academic Portals
-* **Student View:** View grades, overall percentages, attendance records, and download report cards.
-* **Teacher View:** Add/update subject marks, log attendance, and view student performance metrics.
-* **Admin Control:** Audit user activity logs, manage system users, and perform database operations (Backups & Restores).
+* **Student View:**
+  * View Profile
+  * Update Profile
+  * Add/Delete Subjects
+  * View Results
+  * Change Password
+  * View Attendance
+  * Generate PDF/Export CSV
+  * *Note: "Add Marks" and "Mark Attendance" menu options are visible but restricted by role authorization; Student execution is blocked.*
+* **Teacher View:**
+  * View/Search Students
+  * Add/Update Marks
+  * Mark Attendance
+  * View Results
+* **Admin Control:**
+  * View/Search/Delete Students
+  * Reset Student Password
+  * View Results
+  * Export Results CSV
+  * Performance Analytics
+  * Student Leaderboard
+  * Activity Logs
 
 ### 3. Analytics & Automated Reports
 * **Automatic Grading:** Computes percentages and assigns grades (A+, A, B, C, F) dynamically.
@@ -115,7 +134,7 @@ Refactored imports to be local inside functional hooks, maintaining modular sepa
 Added a path-sanitizer function in the export pipeline to ensure reliable file generation on all operating systems.
 
 ### 🔐 3. Strict Permission Parity
-Restored strict permission checks. Note: While menu options for "Add Marks" or "Mark Attendance" may be visible in some dashboard contexts, they are authorization-restricted to Teacher/Admin roles; Student-role execution is blocked and access is denied.
+Restored strict permission checks.
 
 ---
 
@@ -139,9 +158,9 @@ The database utilizes an SQLite relational structure consisting of tables for `u
    ```
 
 2. **Set up a Virtual Environment (Recommended):**
-   ```bash
+   ```powershell
    python -m venv .venv
-   .venv\Scripts\activate
+   .venv\Scripts\Activate.ps1
    ```
 
 3. **Install Dependencies:**
@@ -173,6 +192,7 @@ To run tests:
 ```bash
 python -m unittest tests/test_system.py
 ```
+*Current status: 8/8 automated tests passed. Workflows for Student, Teacher, and Admin have been interactively verified.*
 
 ---
 
