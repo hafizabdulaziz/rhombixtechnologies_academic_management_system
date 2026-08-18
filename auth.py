@@ -230,3 +230,5 @@ def change_password():
     connection.close()
     log_activity("PASSWORD_CHANGE", "User changed password.")
     print("Password Changed Successfully.")
+
+# Refined local imports to prevent circular dependencies at runtime.
