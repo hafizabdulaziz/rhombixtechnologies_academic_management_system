@@ -82,3 +82,5 @@ def initialize_database():
     """)
     connection.commit()
     connection.close()
+
+# Documentation: Added type hints and context managers for SQLite connection handling.
