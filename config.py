@@ -1,0 +1,3 @@
+DATABASE = "student_tracker.db"
+MIN_PASSWORD_LENGHT = 8
+PASS_MARKS_PERCENTAGE = 40
