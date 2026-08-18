@@ -14,7 +14,7 @@
 
 ## 📖 About the Project
 
-The **Academic Management System (Student Grade Tracker)** is a console-based desktop application designed to streamline academic administrative workflows and record-keeping. Developed as a modern restoration of a legacy monolithic system, this platform provides a role-based ecosystem for managing student profiles, grades, attendance, performance analytics, and system audit logs.
+The **Academic Management System (Student Grade Tracker)** is a console-based desktop application designed to streamline academic administrative workflows and record-keeping. Developed as a restoration of a legacy monolithic system, this platform provides a role-based ecosystem for managing student profiles, grades, attendance, performance analytics, and system audit logs.
 
 ### Core Value Proposition
 For schools, colleges, and training centers requiring lightweight academic administration, this system offers:
@@ -101,7 +101,7 @@ The application is engineered following **modular programming principles**, sepa
   * Change Password
   * View Attendance
   * Generate PDF/Export CSV
-  * *Note: "Add Marks" and "Mark Attendance" menu options are visible but restricted by role authorization; Student execution is blocked.*
+  * *Note: Menu options for "Add Marks" and "Mark Attendance" are displayed but restricted by role authorization; Student execution of these functions is blocked.*
 * **Teacher View:**
   * View/Search Students
   * Add/Update Marks
@@ -134,7 +134,7 @@ Refactored imports to be local inside functional hooks, maintaining modular sepa
 Added a path-sanitizer function in the export pipeline to ensure reliable file generation on all operating systems.
 
 ### 🔐 3. Strict Permission Parity
-Restored strict permission checks.
+Restored strict permission checks across all modules.
 
 ---
 
@@ -177,8 +177,8 @@ The database utilizes an SQLite relational structure consisting of tables for `u
 
 ## 🕹️ Interactive Guide & User Roles
 
-### DEMO/TEST Accounts
-*These credentials are for demonstration purposes only and must be changed before deployment.*
+### Demo/Test Credentials
+*These credentials are for demonstration purposes only — not production credentials.*
 * **System Administrator:** `admin` / `admin123`
 * **Teacher Portal:** `teacher` / `teacher123`
 
