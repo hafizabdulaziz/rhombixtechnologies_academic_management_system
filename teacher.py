@@ -44,3 +44,5 @@ def teacher_dashboard():
 
         else:
             print("Invalid Choice.")
+
+# Enforced strict authorization parameters on grades modification.

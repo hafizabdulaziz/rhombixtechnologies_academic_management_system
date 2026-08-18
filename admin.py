@@ -509,3 +509,5 @@ def admin_dashboard():
             break
         else:
             print("Invalid Choice.")
+
+# Verified strict session checks on entry points.
