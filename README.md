@@ -1,36 +1,22 @@
-# 🎓 Academic Management System (Student Grade Tracker)
+# Academic Management System (Student Grade Tracker)
 
-```
-██████╗ ██╗  ██╗ ██████╗ ███╗   ███╗██████╗ ██╗██╗  ██╗
-██╔══██╗██║  ██║██╔═══██╗████╗ ████║██╔══██╗██║╚██╗██╔╝
-██████╔╝███████║██║   ██║██╔████╔██║██████╔╝██║ ╚███╔╝ 
-██╔══██╗██╔══██║██║   ██║██║╚██╔╝██║██╔══██╗██║ ██╔██╗ 
-██║  ██║██║  ██║╚██████╔╝██║ ╚═╝ ██║██████╔╝██║██╔╝ ██╗
-╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚═════╝ ╚═╝╚═╝  ╚═╝
-  A Professional, Modular Academic Portal
-```
+A modular, console-based academic management and grade tracking application implemented in Python and SQLite.
 
----
+## Overview
 
-## 📖 About the Project
+The Academic Management System provides academic record-keeping, grade tracking, attendance management, performance analytics, and system audit logging through an interactive terminal interface. Refactored from a legacy monolithic implementation (`student_grade_tracker_original.py`), the codebase follows a decoupled modular architecture with clear separation of concerns across authentication, database persistence, domain logic, and presentation menus.
 
-The **Academic Management System (Student Grade Tracker)** is a console-based desktop application designed to streamline academic administrative workflows and record-keeping. Developed as a restoration of a legacy monolithic system, this platform provides a role-based ecosystem for managing student profiles, grades, attendance, performance analytics, and system audit logs.
+## Key Capabilities
 
-### Core Value Proposition
-For schools, colleges, and training centers requiring lightweight academic administration, this system offers:
-* **Zero Overhead:** A console interface that requires no heavy web servers or complex browser setups.
-* **Granular Role-Based Access Control (RBAC):** Distinct boundaries separating Student, Teacher, and Administrator operations.
-* **Data Integrity:** A SQLite storage backend with automatic transaction handling.
-* **Auditing:** Systematic activity logging for administrative actions.
-* **Reporting:** Professional PDF grade cards and CSV exports designed for academic distribution.
+- **Role-Based Access Control (RBAC)**: Enforces role boundaries across Student, Teacher, and Administrator personas.
+- **Relational Persistence**: Uses SQLite with transactional operations for structured record storage.
+- **Audit Logging**: Logs administrative events and state modifications for tracking and traceability.
+- **Academic Reporting**: Generates formatted PDF grade report cards using ReportLab alongside CSV export pipelines.
+- **Zero Heavyweight Dependencies**: Runs entirely in console environments without requiring browser frontends or external application servers.
 
----
+## System Architecture
 
-## 🏛️ System Architecture
-
-The application is engineered following **modular programming principles**, separating concerns between the database layer, security, business logic, and presentation menus.
-
-```
+```text
                   ┌─────────────────────────────────┐
                   │             main.py             │
                   │      (Application Entry)        │
@@ -72,130 +58,115 @@ The application is engineered following **modular programming principles**, sepa
 ```
 
 ### Module Breakdown
-1. **`main.py`**: Boots the system and handles the main loop.
-2. **`auth.py`**: Orchestrates signups, logins, and session handoffs.
-3. **`database.py`**: Manages SQLite connection and schema.
-4. **`session.py`**: Encapsulates state for the currently logged-in user.
-5. **`security.py`**: Secures student data using cryptographic hashing.
-6. **`menus.py`**: Renders clear command-line UI elements.
-7. **`student.py`**: Portal for students.
-8. **`teacher.py`**: Interface for educators.
-9. **`admin.py`**: Administrative console.
-10. **`marks.py` / `attendance.py` / `results.py`**: Core domain logic.
-11. **`exports.py`**: Report rendering engine.
 
----
+| Module | Responsibility |
+| :--- | :--- |
+| **`main.py`** | Application bootstrap and top-level execution loop |
+| **`auth.py`** | Registration, login authentication, and session handoffs |
+| **`session.py`** | Session state management for the currently authenticated user |
+| **`security.py`** | Credential security and password hashing routines |
+| **`database.py`** | SQLite database schema initialization and connection management |
+| **`menus.py`** | Terminal UI formatting, banners, and navigational prompts |
+| **`student.py`** | Student portal operations |
+| **`teacher.py`** | Teacher evaluation and grading interface |
+| **`admin.py`** | Administrative console, student records, and system settings |
+| **`marks.py` / `attendance.py` / `results.py`** | Domain business logic, percentage calculations, and attendance tracking |
+| **`exports.py`** | Report generation engine for PDF and CSV output formats |
 
-## 🚀 Key Features
+## Functional Portals & Features
 
-### 1. Security & RBAC
-* **Password Security:** Cryptographic hashing for user credentials.
-* **Dashboard Isolation:** Users are restricted to their authorized dashboards.
+### Role-Based Portals
+- **Student Portal**:
+  - View and update profile information.
+  - Enroll and remove subject selections.
+  - Review academic evaluation results and attendance records.
+  - Update account passwords.
+  - Generate ReportLab PDF grade reports and export CSV results.
+  - *Note: While menu options for "Add Marks" and "Mark Attendance" appear in the menu layout, execution is restricted to authorized roles and blocked for student accounts.*
+- **Teacher Portal**:
+  - Search and inspect student academic profiles.
+  - Input and modify subject marks.
+  - Record attendance entries.
+  - Review student aggregate performance.
+- **Administrator Console**:
+  - Comprehensive student CRUD and password reset utilities.
+  - Academic result aggregation and performance analytics.
+  - Academic leaderboards and cohort performance summaries.
+  - System activity and audit log inspection.
+  - Cohort CSV export generation.
 
-### 2. Academic Portals
-* **Student View:**
-  * View Profile
-  * Update Profile
-  * Add/Delete Subjects
-  * View Results
-  * Change Password
-  * View Attendance
-  * Generate PDF/Export CSV
-  * *Note: Menu options for "Add Marks" and "Mark Attendance" are displayed but restricted by role authorization; Student execution of these functions is blocked.*
-* **Teacher View:**
-  * View/Search Students
-  * Add/Update Marks
-  * Mark Attendance
-  * View Results
-* **Admin Control:**
-  * View/Search/Delete Students
-  * Reset Student Password
-  * View Results
-  * Export Results CSV
-  * Performance Analytics
-  * Student Leaderboard
-  * Activity Logs
+### Analytics & Reporting Engine
+- **Automated Grading Engine**: Computes overall percentage scores and evaluates letter grades dynamically (`A+`, `A`, `B`, `C`, `F`).
+- **PDF Generation**: Renders formatted grade cards via ReportLab.
+- **CSV Data Pipelines**: Exports student rosters, marks, and historical results for external tools.
 
-### 3. Analytics & Automated Reports
-* **Automatic Grading:** Computes percentages and assigns grades (A+, A, B, C, F) dynamically.
-* **PDF Report Cards:** Generates professional report cards using ReportLab.
-* **CSV Export:** Export class rosters and marks for external processing.
+## Architectural Refactoring Notes
 
----
+The codebase refactored an unorganized legacy script (`student_grade_tracker_original.py`), resolving several specific architectural challenges:
+1. **Circular Import Resolution**: Addressed interdependent module imports by scoping imports locally within functional hooks, preserving module isolation.
+2. **File Path Sanitization**: Implemented roll number sanitization in export workflows to ensure cross-platform file path compatibility.
+3. **Permission Parity**: Rebuilt authorization validation across all operations to prevent privilege escalation.
 
-## 🛠️ The Restoration & Development Journey
+## Database Schema
 
-This repository represents a refactoring of a legacy monolithic script (`student_grade_tracker_original.py`). Technical issues resolved include:
+The SQLite schema consists of relational entities:
+- `users`: User identity and role associations.
+- `students`: Core student demographic profiles.
+- `subjects`: Academic course offerings.
+- `student_subjects`: Student-course enrollment relationships.
+- `marks`: Academic score entries linked to students and subjects.
+- `attendance`: Date-stamped attendance logs.
+- `activity_logs`: Administrative actions and state changes.
 
-### 🧩 1. Circular Imports Resolution
-Refactored imports to be local inside functional hooks, maintaining modular separation.
+## Setup & Execution
 
-### 💾 2. Roll Number Sanitization
-Added a path-sanitizer function in the export pipeline to ensure reliable file generation on all operating systems.
+### Prerequisites
+- Python 3.12 or newer
+- Operating System: Windows 10/11, macOS, or Linux
 
-### 🔐 3. Strict Permission Parity
-Restored strict permission checks across all modules.
+### Installation
 
----
-
-## 💾 Database Schema
-
-The database utilizes an SQLite relational structure consisting of tables for `users`, `students`, `subjects`, `student_subjects`, `marks`, `attendance`, and `activity_logs`.
-
----
-
-## ⚙️ Installation & Requirements
-
-### System Requirements
-* **Python Version:** Python 3.12 or newer.
-* **OS Support:** Windows 10/11, macOS 13+, Linux.
-
-### Installation Instructions
-1. **Clone the Repository:**
+1. **Clone the repository**:
    ```bash
    git clone https://github.com/hafizabdulaziz/rhombixtechnologies_academic_management_system.git
    cd rhombixtechnologies_academic_management_system
    ```
 
-2. **Set up a Virtual Environment (Recommended):**
-   ```powershell
+2. **Configure Virtual Environment**:
+   ```bash
    python -m venv .venv
-   .venv\Scripts\Activate.ps1
+
+   # Windows
+   .venv\Scripts\activate
+
+   # Linux / macOS
+   source .venv/bin/activate
    ```
 
-3. **Install Dependencies:**
+3. **Install Dependencies**:
    ```bash
    pip install -r requirements.txt
    ```
 
-4. **Launch the Application:**
+4. **Launch Application**:
    ```bash
    python main.py
    ```
 
----
+### Demonstration Credentials
+*Provided for local functional testing:*
+- **Administrator**: `admin` / `admin123`
+- **Teacher**: `teacher` / `teacher123`
 
-## 🕹️ Interactive Guide & User Roles
+## Testing & Verification
 
-### Demo/Test Credentials
-*These credentials are for demonstration purposes only — not production credentials.*
-* **System Administrator:** `admin` / `admin123`
-* **Teacher Portal:** `teacher` / `teacher123`
+Automated test specifications are located within the `tests/` directory:
 
----
-
-## 🧪 Verification & Testing Suite
-
-Automated unit and integration tests are in the `tests/` directory.
-
-To run tests:
 ```bash
 python -m unittest tests/test_system.py
 ```
-*Current status: 8/8 automated tests passed. Workflows for Student, Teacher, and Admin have been interactively verified.*
+*Current test suite status: 8/8 automated test cases passing across Student, Teacher, and Administrator operational workflows.*
 
----
+## License
 
-## 📜 License & About
-
-This project is open-source and released under the MIT License. Developed by **Hafiz Abdul Aziz** at Panaversity.
+This project is licensed under the MIT License. Developed by Hafiz Abdul Aziz at Panaversity.
